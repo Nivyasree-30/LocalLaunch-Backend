@@ -1,0 +1,11 @@
+package com.locallaunch.service;
+import com.locallaunch.entity.*; import com.locallaunch.exception.ResourceNotFoundException; import com.locallaunch.repository.*; import org.springframework.security.core.context.SecurityContextHolder; import org.springframework.stereotype.Service; import java.util.List;
+@Service public class ProductService {
+ private final ProductRepository productRepository; private final UserRepository userRepository; private final BusinessRepository businessRepository;
+ public ProductService(ProductRepository p,UserRepository u,BusinessRepository b){productRepository=p;userRepository=u;businessRepository=b;}
+ public Product saveProduct(Product product){User u=getUser(); if(product.getBusiness()==null||product.getBusiness().getId()==null) throw new IllegalArgumentException("Business is required"); Business b=businessRepository.findByIdAndOwnerId(product.getBusiness().getId(),u.getId()).orElseThrow(()->new ResourceNotFoundException("Business not found or access denied")); product.setBusiness(b); return productRepository.save(product);}
+ public Product updateProduct(Long id,Product updated){User u=getUser(); Product p=productRepository.findByIdAndBusinessOwnerId(id,u.getId()).orElseThrow(()->new ResourceNotFoundException("Product not found or access denied")); p.setProductName(updated.getProductName());p.setPrice(updated.getPrice());p.setDescription(updated.getDescription());p.setImageUrl(updated.getImageUrl());p.setAvailable(updated.isAvailable());return productRepository.save(p);}
+ public List<Product> getMyProductsByBusinessId(Long id){User u=getUser();businessRepository.findByIdAndOwnerId(id,u.getId()).orElseThrow(()->new ResourceNotFoundException("Business not found or access denied"));return productRepository.findByBusinessId(id);}
+ public void deleteProduct(Long id){User u=getUser();Product p=productRepository.findByIdAndBusinessOwnerId(id,u.getId()).orElseThrow(()->new ResourceNotFoundException("Product not found or access denied"));productRepository.delete(p);}
+ private User getUser(){String email=SecurityContextHolder.getContext().getAuthentication().getName();return userRepository.findByEmail(email).orElseThrow(()->new ResourceNotFoundException("User not found"));}
+}

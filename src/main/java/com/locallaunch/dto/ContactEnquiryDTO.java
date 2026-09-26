@@ -1,0 +1,5 @@
+package com.locallaunch.dto;
+public class ContactEnquiryDTO { private Long id; private String customerName; private String customerEmail; private String mobileNumber; private String message; private String status; private Long productId; private String productName; private Double productPrice;
+ public ContactEnquiryDTO(){} public ContactEnquiryDTO(Long id,String customerName,String customerEmail,String mobileNumber,String message,String status,Long productId,String productName,Double productPrice){this.id=id;this.customerName=customerName;this.customerEmail=customerEmail;this.mobileNumber=mobileNumber;this.message=message;this.status=status;this.productId=productId;this.productName=productName;this.productPrice=productPrice;}
+ public Long getId(){return id;} public String getCustomerName(){return customerName;} public String getCustomerEmail(){return customerEmail;} public String getMobileNumber(){return mobileNumber;} public String getMessage(){return message;} public String getStatus(){return status;} public Long getProductId(){return productId;} public String getProductName(){return productName;} public Double getProductPrice(){return productPrice;}
+}

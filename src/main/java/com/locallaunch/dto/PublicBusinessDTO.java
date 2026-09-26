@@ -1,0 +1,6 @@
+package com.locallaunch.dto;
+import java.util.List;
+public class PublicBusinessDTO {
+ private Long id; private String businessName; private String category; private String location; private String description; private String contactNumber; private String businessImage; private List<String> businessImages; private boolean published;
+ public Long getId(){return id;} public void setId(Long v){id=v;} public String getBusinessName(){return businessName;} public void setBusinessName(String v){businessName=v;} public String getCategory(){return category;} public void setCategory(String v){category=v;} public String getLocation(){return location;} public void setLocation(String v){location=v;} public String getDescription(){return description;} public void setDescription(String v){description=v;} public String getContactNumber(){return contactNumber;} public void setContactNumber(String v){contactNumber=v;} public String getBusinessImage(){return businessImage;} public void setBusinessImage(String v){businessImage=v;} public List<String> getBusinessImages(){return businessImages;} public void setBusinessImages(List<String> v){businessImages=v;} public boolean isPublished(){return published;} public void setPublished(boolean v){published=v;}
+}

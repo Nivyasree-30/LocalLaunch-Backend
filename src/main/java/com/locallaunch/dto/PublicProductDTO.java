@@ -1,0 +1,5 @@
+package com.locallaunch.dto;
+public class PublicProductDTO {
+ private Long id; private String productName; private double price; private String description; private String imageUrl; private boolean available; private double averageRating; private long ratingCount;
+ public Long getId(){return id;} public void setId(Long v){id=v;} public String getProductName(){return productName;} public void setProductName(String v){productName=v;} public double getPrice(){return price;} public void setPrice(double v){price=v;} public String getDescription(){return description;} public void setDescription(String v){description=v;} public String getImageUrl(){return imageUrl;} public void setImageUrl(String v){imageUrl=v;} public boolean isAvailable(){return available;} public void setAvailable(boolean v){available=v;} public double getAverageRating(){return averageRating;} public void setAverageRating(double v){averageRating=v;} public long getRatingCount(){return ratingCount;} public void setRatingCount(long v){ratingCount=v;}
+}

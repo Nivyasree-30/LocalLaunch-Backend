@@ -1,0 +1,3 @@
+package com.locallaunch.dto;
+import java.time.LocalDateTime;
+public class PublicUpdateDTO { private Long id; private String title; private String content; private String imageUrl; private LocalDateTime createdAt; public PublicUpdateDTO(){} public PublicUpdateDTO(Long id,String title,String content,String imageUrl,LocalDateTime createdAt){this.id=id;this.title=title;this.content=content;this.imageUrl=imageUrl;this.createdAt=createdAt;} public Long getId(){return id;} public String getTitle(){return title;} public String getContent(){return content;} public String getImageUrl(){return imageUrl;} public LocalDateTime getCreatedAt(){return createdAt;} }
